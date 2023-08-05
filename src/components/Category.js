@@ -5,16 +5,29 @@ const Category = ({ jsonData, setCounter }) => {
   //managing state of cart array
   const [cart, setCart] = useState([]);
 
-  function addProduct(data) {
+  function addProduct(category,data) {
+    // creating new obj with category
+    const obj ={
+      category:category,
+      name:data.name,
+      price:data.price,
+    }
     //to add product in cart array
-    setCart((cart) => [...cart, data]);
+    setCart((cart) => [...cart, obj]);
 
-    console.log("Product Added to the cart :", data);
+    console.log("Product Added to the cart :", obj);
   }
-  function removeProduct(data) {
+  function removeProduct(category,data) {
     // to remove product from cart array
 
-    const removeIndex = cart.findIndex((item) => item.name === data.name);
+    // creating new obj with category
+    const obj ={
+      category:category,
+      name:data.name,
+      price:data.price,
+    }
+
+    const removeIndex = cart.findIndex((item) => item.name === data.name && item.category === category);
     // to get an index of item to be deleted
 
     if (removeIndex !== -1) {
@@ -23,7 +36,7 @@ const Category = ({ jsonData, setCounter }) => {
       newCart.splice(removeIndex, 1);
       setCart(newCart);
 
-      console.log("Product removed from the cart :", data);
+      console.log("Product removed from the cart :", obj);
     }
   }
 
@@ -45,13 +58,13 @@ const Category = ({ jsonData, setCounter }) => {
               {category.productList &&
                 category.productList.map((product, index) => (
                   <div className="product">
-                    <h4>Name : {product.name}</h4>
-                    <h4>Price  : {product.price}</h4>
+                    <h4> Name : {product.name}</h4>
+                    <h4> Price &nbsp;: {product.price}</h4>
                     <div className="btnContainer">
                       <button
                         className="btn addBtn"
                         onClick={() => {
-                          addProduct(product);
+                          addProduct(category.name,product);
                         }}
                       >
                         ADD &nbsp;
@@ -60,7 +73,7 @@ const Category = ({ jsonData, setCounter }) => {
                       <button
                         className="btn removeBtn"
                         onClick={() => {
-                          removeProduct(product);
+                          removeProduct(category.name,product);
                         }}
                       >
                         REMOVE &nbsp; <FaMinus />
