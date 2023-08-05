@@ -1,38 +1,98 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
 .App {
-  text-align: center;
+  min-width: 100vw;
+  background-color: #f5f5f5;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Category css */
+
+.productContainer {
+  display: flex;
+  overflow: auto;
+}
+.product {
+  margin: 15px 10px 10px 10px;
+  padding: 20px;
+  width: 250px;
+  background-color: white;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.addBtn {
+  color: white;
+  background-color: rgb(27, 165, 27);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.removeBtn {
+  color: white;
+  background-color: rgb(185, 35, 35);
+}
+
+.btnContainer {
+  margin: 10px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.btn {
+  margin: 5px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn > svg {
+  position: relative;
+  top: 2px;
+}
+
+/* Header css */
+
+.headerContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.headerContainer svg {
+  width: 2em;
+  height: 2em;
+}
+
+.cartNoti {
   color: white;
+  border-radius: 50px;
+  width: 15px;
+  background-color: red;
+  height: 15px;
+  position: relative;
+  /* top: 1PX; */
+  right: 10px;
+}
+.cartCounter {
+  position: relative;
+  left: 3px;
+  bottom: 4px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 480px) {
+  .App {
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (min-width: 480px) {
+  .category {
+    margin: 30px;
   }
 }
